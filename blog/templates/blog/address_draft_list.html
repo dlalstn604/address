@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for address in address %}
-        <div class="address">
+        <div class="address" method="POST">
             <p class="date">등록일 : {{ address.created_date|date:'d-m-Y' }}</p>
             <h1><a href="{% url 'address_detail' pk=address.pk %}">{{ address.name }}</a></h1>
             <p>연락처1 : {{ address.phone_number|truncatechars:200 }}</p>
