@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 def address_list(request):
     address = Address.objects.filter(published_date__isnull=False).order_by('created_date')
-    return render(request, 'blog/address_draft_list.html', {'address': address})
+    return render(request, 'blog/address_list.html', {'address': address})
 
 def address_detail(request, pk):
     address = get_object_or_404(Address, pk=pk)

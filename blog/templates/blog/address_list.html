@@ -2,7 +2,6 @@
 
 {% block content %}
     {% for address in address %}
-    {% if user.is_authenticated %}
         <div class="page-header">
             <h1><a href="{% url 'address_detail' pk=address.pk %}">{{ address.name }}</a></h1>
         </div>
@@ -11,6 +10,5 @@
             <p>연락처2 : {{ address.home_number }}</p>
             <p>이메일 : {{ address.email }}</p>
         </div>
-    {% endif %}
     {% endfor %}
 {% endblock %}
