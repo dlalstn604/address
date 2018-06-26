@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for address in address %}
+        <div class="page-header">
+            <h1><a href="{% url 'address_detail' pk=address.pk %}">{{ address.name }}</a></h1>
+        </div>
+        <div class="address">
+            <p>연락처1 : {{ address.phone_number }}</p>
+            <p>연락처2 : {{ address.home_number }}</p>
+            <p>이메일 : {{ address.email }}</p>
+            <br>
+        </div>
+    {% endfor %}
+{% endblock %}
