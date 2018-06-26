@@ -14,6 +14,7 @@
             <a class="btn btn-default" href="{% url 'address_remove' pk=address.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
         <h1>{{ address.name }}</h1>
+        <p>{{ address.author }}</p>
         <p>연락처1 : {{ address.phone_number }}</p>
         <p>연락처2 : {{ address.home_number }}</p>
         <p>이메일 : {{ address.email }}</p>

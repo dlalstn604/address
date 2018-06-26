@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def address_list(request):
-    address = Address.objects.order_by('created_date')
-    return render(request, 'blog/address_list.html', {'address': address})
+    address = Address.objects.filter(published_date__isnull=False).order_by('created_date')
+    return render(request, 'blog/address_draft_list.html', {'address': address})
 
 def address_detail(request, pk):
     address = get_object_or_404(Address, pk=pk)
@@ -20,7 +20,7 @@ def address_new(request):
         form = AddressForm(request.POST)
         if form.is_valid():
             address = form.save(commit=False)
-            address.name = request.user
+            address.name
             address.created_date = timezone.now()
             address.save()
             return redirect('address_detail', pk=address.pk)
@@ -35,7 +35,7 @@ def address_edit(request, pk):
         form = AddressForm(request.POST)
         if form.is_valid():
             address = form.save(commit=False)
-            address.name = request.user
+            address.name
             address.created_date = timezone.now()
             address.save()
             return redirect('address_detail', pk=address.pk)
