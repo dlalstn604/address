@@ -9,9 +9,11 @@
         {% else %}
             <a class="btn btn-default" href="{% url 'address_publish' pk=address.pk %}">Publish</a>
         {% endif %}
+        {% if user.is_authenticated %}
         {% if address.created_date %}
             <a class="btn btn-default" href="{% url 'address_edit' pk=address.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             <a class="btn btn-default" href="{% url 'address_remove' pk=address.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
         {% endif %}
         <h1>{{ address.name }}</h1>
         <p>{{ author.first_name }}</p>
