@@ -12,13 +12,12 @@ class Address(models.Model):
     phone_number = models.CharField(max_length=30, null=True, blank=True)
     home_number = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+    published_date = models.DateTimeField(
+        blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
 
     def __str__(self):
         return self.name
-
-class Memo(models.Model):
-    memo = models.TextField
-    address = models.ForeignKey('Address', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.memo

@@ -2,13 +2,16 @@
 
 {% block content %}
     <div method="POST" class="address">
-        {% if address.created_date %}
+        {% if address.published_date %}
             <div class="date">
-                {{ address.created_date }}
+                {{ address.published_date }}
             </div>
+        {% else %}
+            <a class="btn btn-default" href="{% url 'address_publish' pk=address.pk %}">Publish</a>
         {% endif %}
-        {% if user.is_authenticated %}
+        {% if address.created_date %}
             <a class="btn btn-default" href="{% url 'address_edit' pk=address.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'address_remove' pk=address.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
         <h1>{{ address.name }}</h1>
         <p>연락처1 : {{ address.phone_number }}</p>
